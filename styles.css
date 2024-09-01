@@ -1,0 +1,161 @@
+/* General Body Style */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+}
+
+/* Page Container */
+.page-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Form Wrapper */
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Form Container */
+.form-container {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+/* Hover Effect for Form Container */
+.form-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Title Styling */
+h2.form-title {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    animation: titleAnimation 1.5s ease-in-out infinite;
+    transition: color 0.3s ease;
+    text-align: left;
+}
+
+/* Animation for Title */
+@keyframes titleAnimation {
+    0%, 100% {
+        color: #333;
+        transform: translateY(0);
+    }
+    50% {
+        color: #007bff;
+        transform: translateY(-8px);
+    }
+}
+
+/* Label Styling */
+label {
+    display: block;
+    margin-top: 10px;
+    color: #555;
+    font-size: 14px;
+    animation: labelAnimation 1s ease-in-out;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-align: left;
+}
+
+/* Animation for Labels */
+@keyframes labelAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input, Select, and Button Styling */
+input, select, button {
+    margin-top: 6px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: box-shadow 0.3s ease, transform 0.3
+
+
+/* Hover Effect for Button */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Clubs Container */
+#clubs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1cm; /* Add 1 cm space above the clubs */
+    text-align: left; /* Align clubs text to the left */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    .form-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h2.form-title {
+        font-size: 18px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    input, select, button {
+        font-size: 12px;
+    }
+
+    #clubs {
+        flex-direction: column;
+    }
+}

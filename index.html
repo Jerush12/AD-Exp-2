@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function validateSignUpForm() {
+            const password = document.getElementById('password').value;
+            const collegeID = document.getElementById('collegeID').files.length;
+
+            // Check if the college ID photo is uploaded
+            if (collegeID === 0) {
+                alert("Please upload your college ID photo.");
+                return false;
+            }
+
+            // Hide sign-up form and show club form
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('clubForm').style.display = 'block';
+
+            return false; // Prevent form submission
+        }
+
+        function validateClubForm() {
+            const checkboxes = document.querySelectorAll('#clubForm input[type="checkbox"]');
+            let selectedClubs = [];
+            checkboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    selectedClubs.push(checkbox.value);
+                }
+            });
+
+            if (selectedClubs.length === 0) {
+                alert("Please select at least one club.");
+                return false;
+            }
+
+            // Create confirmation message
+            const message = `You have successfully joined the following clubs: ${selectedClubs.join(', ')}. Thank you!`;
+            
+            // Hide the club form
+            document.getElementById('clubForm').style.display = 'none';
+            
+            // Show confirmation message
+            const submittedDataDiv = document.getElementById('submittedData');
+            submittedDataDiv.innerHTML = `<h2 class="form-title">Confirmation</h2><p>${message}</p>`;
+            submittedDataDiv.style.display = 'block';
+
+            return false; // Prevent form submission
+        }
+    </script>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop class="background-video">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    
+    <div class="page-container">
+        <div class="form-wrapper">
+            <div class="form-container">
+                <!-- Sign Up Form -->
+                <form id="signupForm" onsubmit="return validateSignUpForm();">
+                    <h2 class="form-title">The Forbidden Club</h2>
+                    
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your username" minlength="3" maxlength="15">
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    
+                    <label for="currentYear">Current Year:</label>
+                    <select id="currentYear" name="currentYear" required>
+                        <option value="">Select your current year</option>
+                        <option value="1st">1st Year</option>
+                        <option value="2nd">2nd Year</option>
+                        <option value="3rd">3rd Year</option>
+                        <option value="4th">4th Year</option>
+                    </select>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password" minlength="8">
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number" pattern="[0-9]{10}">
+
+                    <label for="collegeID">Upload College ID Photo:</label>
+                    <input type="file" id="collegeID" name="collegeID" accept="image/*" required>
+
+                    <label for="college">College:</label>
+                    <select id="college" name="college" required>
+                        <option value="">Select your college</option>
+                        <!-- List of colleges -->
+                        <option value="PSG College of Technology">PSG College of Technology</option>
+                        <option value="Coimbatore Institute of Technology (CIT)">Coimbatore Institute of Technology (CIT)</option>
+                        <option value="Amrita Vishwa Vidyapeetham">Amrita Vishwa Vidyapeetham</option>
+                        <option value="Kumaraguru College of Technology (KCT)">Kumaraguru College of Technology (KCT)</option>
+                        <option value="Sri Krishna College of Engineering and Technology (SKCET)">Sri Krishna College of Engineering and Technology (SKCET)</option>
+                        <option value="Sri Ramakrishna Engineering College (SREC)">Sri Ramakrishna Engineering College (SREC)</option>
+                        <option value="Hindusthan College of Engineering and Technology">Hindusthan College of Engineering and Technology</option>
+                        <option value="Karunya Institute of Technology and Sciences">Karunya Institute of Technology and Sciences</option>
+                        <option value="Dr. Mahalingam College of Engineering and Technology">Dr. Mahalingam College of Engineering and Technology</option>
+                        <option value="PSG College of Arts and Science">PSG College of Arts and Science</option>
+                        <option value="KPR Institute of Engineering and Technology (KPRIET)">KPR Institute of Engineering and Technology (KPRIET)</option>
+                        <option value="Vellore Institute of Technology (VIT)">Vellore Institute of Technology (VIT)</option>
+                        <option value="Indian Institute of Technology (IIT) Madras">Indian Institute of Technology (IIT) Madras</option>
+                        <option value="National Institute of Technology (NIT) Tiruchirappalli">National Institute of Technology (NIT) Tiruchirappalli</option>
+                        <option value="Anna University">Anna University</option>
+                        <option value="Bannari Amman Institute of Technology (BIT)">Bannari Amman Institute of Technology (BIT)</option>
+                        <option value="Velammal Engineering College">Velammal Engineering College</option>
+                        <option value="Sona College of Technology">Sona College of Technology</option>
+                        <option value="SRM Institute of Science and Technology">SRM Institute of Science and Technology</option>
+                        <option value="SSN College of Engineering">SSN College of Engineering</option>
+                        <option value="Rajalakshmi Engineering College">Rajalakshmi Engineering College</option>
+                        <option value="St. Joseph's College of Engineering">St. Joseph's College of Engineering</option>
+                        <option value="Saveetha Engineering College">Saveetha Engineering College</option>
+                        <option value="Easwari Engineering College">Easwari Engineering College</option>
+                        <option value="Meenakshi Sundararajan Engineering College">Meenakshi Sundararajan Engineering College</option>
+                        <option value="Sri Sairam Engineering College">Sri Sairam Engineering College</option>
+                        <option value="Madras Institute of Technology (MIT)">Madras Institute of Technology (MIT)</option>
+                        <option value="Valliammai Engineering College">Valliammai Engineering College</option>
+                        <option value="Vivekananda Institute of Engineering and Technology">Vivekananda Institute of Engineering and Technology</option>
+                    </select>
+
+                    <!-- Submit Button Container -->
+                    <div class="button-container">
+                        <input type="submit" value="Sign Up">
+                    </div>
+                </form>
+
+                <!-- Club Form -->
+                <form id="clubForm" onsubmit="return validateClubForm();" style="display:none;">
+                    <h2 class="form-title">Select Clubs</h2>
+                    <label><input type="checkbox" name="clubs" value="Art Club"> Art Club</label>
+                    <label><input type="checkbox" name="clubs" value="Dance Club"> Dance Club</label>
+                    <label><input type="checkbox" name="clubs" value="Media Club"> Media Club</label>
+                    <label><input type="checkbox" name="clubs" value="Photography Club"> Photography Club</label>
+                    <label><input type="checkbox" name="clubs" value="Academic Club"> Academic Club</label>
+                    <label><input type="checkbox" name="clubs" value="Basketball Club"> Basketball Club</label>
+                    <label><input type="checkbox" name="clubs" value="Coders Club"> Coders Club</label>
+                    <label><input type="checkbox" name="clubs" value="Drama Club"> Drama Club</label>
+                    <label><input type="checkbox" name="clubs" value="Student Newspaper Club"> Student Newspaper Club</label>
+                    <label><input type="checkbox" name="clubs" value="Disney Club"> Disney Club</label>
+                    <label><input type="checkbox" name="clubs" value="Eco Club"> Eco Club</label>
+                    <label><input type="checkbox" name="clubs" value="Fitness Club"> Fitness Club</label>
+
+                    <div class="button-container">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+
+                <!-- Submitted Data -->
+                <div id="submittedData" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
